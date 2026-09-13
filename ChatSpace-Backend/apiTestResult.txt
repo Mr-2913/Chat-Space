@@ -1,0 +1,249 @@
+1. register api : post http://localhost:3001/api/users/register
+
+json
+{
+    "name":"test user 1",
+    "username":"User1",
+    "phonenumber":"9090909090",
+    "email":"testuser1@gmail.com",
+    "password":"TestUser1"
+}
+{
+    "name":"test user 2",
+    "username":"User2",
+    "phonenumber":"9191919191",
+    "email":"testuser2@gmail.com",
+    "password":"TestUser2"
+}
+
+result:
+{
+    "success": true,
+    "message": "New User Create Successfully",
+    "data": {
+        "_id": "6aa640537f2c64c105e54026",
+        "name": "test user 1",
+        "email": "testuser1@gmail.com",
+        "phonenumber": 9090909090,
+        "username": "User1"
+    }
+}
+{
+    "success": true,
+    "message": "New User Create Successfully",
+    "data": {
+        "_id": "6aa640cd7f2c64c105e54027",
+        "name": "test user 2",
+        "email": "testuser2@gmail.com",
+        "phonenumber": 9191919191,
+        "username": "User2"
+    }
+}
+
+2. login api : post http://localhost:3001/api/users/login
+{
+    "username":"User1",
+    "password":"TestUser1"
+}
+{
+    "username":"User2",
+    "password":"TestUser2"
+}
+
+result:
+{
+    "success": true,
+    "message": "Login successful",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTY0MDUzN2YyYzY0YzEwNWU1NDAyNiIsInVzZXJuYW1lIjoiVXNlcjEiLCJpYXQiOjE3ODkyODA4ODgsImV4cCI6MTc4OTM2NzI4OH0.H3gg_K8u8C-AV2A-HkdY_LSxMMLkdi__dv4ECHgKf_Y",
+    "data": {
+        "_id": "6aa640537f2c64c105e54026",
+        "name": "test user 1",
+        "username": "User1",
+        "email": "testuser1@gmail.com",
+        "phonenumber": 9090909090
+    }
+}
+{
+    "success": true,
+    "message": "Login successful",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTY0MGNkN2YyYzY0YzEwNWU1NDAyNyIsInVzZXJuYW1lIjoiVXNlcjIiLCJpYXQiOjE3ODkyODA3OTMsImV4cCI6MTc4OTM2NzE5M30.CqaPr1TTf5zFDqcTwE4b5eqIn8eTxvY8iuuUMSIFmTQ",
+    "data": {
+        "_id": "6aa640cd7f2c64c105e54027",
+        "name": "test user 2",
+        "username": "User2",
+        "email": "testuser2@gmail.com",
+        "phonenumber": 9191919191
+    }
+}
+
+
+
+3. userprofile api : get http://localhost:3001/api/users/profile
+u1: authheader > barear token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTY0MDUzN2YyYzY0YzEwNWU1NDAyNiIsInVzZXJuYW1lIjoiVXNlcjEiLCJpYXQiOjE3ODkyODQ5NDMsImV4cCI6MTc4OTM3MTM0M30.MAmyd_4IBpl50J7rOFnGrsLfALXvW9JvYQquzVcMkds
+u2: authheader > barear token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTY0MGNkN2YyYzY0YzEwNWU1NDAyNyIsInVzZXJuYW1lIjoiVXNlcjIiLCJpYXQiOjE3ODkyODUwNTQsImV4cCI6MTc4OTM3MTQ1NH0.nkO7alOZwoer18TGXhdi1idkhAASFx7cbRe0_q82dAc
+
+{
+    "success": true,
+    "data": {
+        "_id": "6aa640537f2c64c105e54026",
+        "name": "test user 1",
+        "username": "User1",
+        "phonenumber": 9090909090,
+        "email": "testuser1@gmail.com",
+        "__v": 0
+    }
+}
+{
+    "success": true,
+    "data": {
+        "_id": "6aa640cd7f2c64c105e54027",
+        "name": "test user 2",
+        "username": "User2",
+        "phonenumber": 9191919191,
+        "email": "testuser2@gmail.com",
+        "__v": 0
+    }
+}
+
+
+4. update api : get http://localhost:3001/api/users/profile
+u1: authheader > barear token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTY0MDUzN2YyYzY0YzEwNWU1NDAyNiIsInVzZXJuYW1lIjoiVXNlcjEiLCJpYXQiOjE3ODkyODQ5NDMsImV4cCI6MTc4OTM3MTM0M30.MAmyd_4IBpl50J7rOFnGrsLfALXvW9JvYQquzVcMkds
+
+{
+    "name":"TestUser0",  1>0
+    "username":"User0"
+}
+result:
+{
+    "success": true,
+    "message": "Profile updated successfully",
+    "data": {
+        "_id": "6aa640537f2c64c105e54026",
+        "name": "TestUser0",
+        "username": "User0",
+        "phonenumber": 9090909090,
+        "email": "testuser1@gmail.com",
+        "__v": 0
+    }
+}
+
+5. update password api : get http://localhost:3001/api/users/change-password
+u1: authheader > barear token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTY0MDUzN2YyYzY0YzEwNWU1NDAyNiIsInVzZXJuYW1lIjoiVXNlcjEiLCJpYXQiOjE3ODkyODQ5NDMsImV4cCI6MTc4OTM3MTM0M30.MAmyd_4IBpl50J7rOFnGrsLfALXvW9JvYQquzVcMkds
+
+{
+    "currentpassword":"TestUser1",
+    "newpassword":"TestUser0"
+}
+result:
+{
+    "success": true,
+    "message": "Password changed successfully"
+}
+
+6. create conversation api : http://localhost:3001/api/conversations/
+user 0 create conversation for user 2 
+user0 > authHeader > barear token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTY0MDUzN2YyYzY0YzEwNWU1NDAyNiIsInVzZXJuYW1lIjoiVXNlcjAiLCJpYXQiOjE3ODkyOTEwNDEsImV4cCI6MTc4OTM3NzQ0MX0.g710UuLUEphvulf17f7cCytZKT_d19Ulek29qncXWDk
+raw json:
+{
+    "userId":"6aa640cd7f2c64c105e54027"
+}
+result:
+{
+    "success": true,
+    "message": "Conversation created successfully.",
+    "conversation": {
+        "participants": [
+            "6aa640537f2c64c105e54026",
+            "6aa640cd7f2c64c105e54027"
+        ],
+        "type": "private",
+        "lastMessageAt": null,
+        "_id": "6aa66a6b1a7ce044ad34b5fe",
+        "createdAt": "2026-09-13T09:18:35.926Z",
+        "updatedAt": "2026-09-13T09:18:35.926Z",
+        "__v": 0
+    }
+}
+
+7. get conversation api : http://localhost:3001/api/conversations/
+user 0 create conversation for user 2 
+user0 > authHeader > barear token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTY0MDUzN2YyYzY0YzEwNWU1NDAyNiIsInVzZXJuYW1lIjoiVXNlcjAiLCJpYXQiOjE3ODkyOTEwNDEsImV4cCI6MTc4OTM3NzQ0MX0.g710UuLUEphvulf17f7cCytZKT_d19Ulek29qncXWDk
+
+{
+    "success": true,
+    "message": "Conversation Fetched Successfully",
+    "conversation": [
+        {
+            "_id": "6aa66a6b1a7ce044ad34b5fe",
+            "participants": [
+                {
+                    "_id": "6aa640537f2c64c105e54026",
+                    "username": "User0",
+                    "email": "testuser1@gmail.com"
+                },
+                {
+                    "_id": "6aa640cd7f2c64c105e54027",
+                    "username": "User2",
+                    "email": "testuser2@gmail.com"
+                }
+            ],
+            "type": "private",
+            "lastMessageAt": null,
+            "createdAt": "2026-09-13T09:18:35.926Z",
+            "updatedAt": "2026-09-13T09:18:35.926Z",
+            "__v": 0
+        }
+    ]
+}
+
+
+9. get conversation by id api: http://localhost:3001/api/conversations/:conversationId(6aa66a6b1a7ce044ad34b5fe)
+user 0 create conversation for user 2 
+user0 > authHeader > barear token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTY0MDUzN2YyYzY0YzEwNWU1NDAyNiIsInVzZXJuYW1lIjoiVXNlcjAiLCJpYXQiOjE3ODkyOTEwNDEsImV4cCI6MTc4OTM3NzQ0MX0.g710UuLUEphvulf17f7cCytZKT_d19Ulek29qncXWDk
+
+{
+    "success": true,
+    "message": "Conversation fetched successfully.",
+    "conversation": {
+        "deletedFor": [],
+        "_id": "6aa66a6b1a7ce044ad34b5fe",
+        "participants": [
+            {
+                "_id": "6aa640537f2c64c105e54026",
+                "name": "TestUser0",
+                "username": "User0",
+                "email": "testuser1@gmail.com"
+            },
+            {
+                "_id": "6aa640cd7f2c64c105e54027",
+                "name": "test user 2",
+                "username": "User2",
+                "email": "testuser2@gmail.com"
+            }
+        ],
+        "type": "private",
+        "lastMessageAt": null,
+        "createdAt": "2026-09-13T09:18:35.926Z",
+        "updatedAt": "2026-09-13T09:18:35.926Z",
+        "__v": 0
+    }
+}
+
+
+
+10. create message api: http://localhost:3001/api/messages/
+user 0 create conversation for user 2 
+user0 > authHeader > barear token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhYTY0MDUzN2YyYzY0YzEwNWU1NDAyNiIsInVzZXJuYW1lIjoiVXNlcjAiLCJpYXQiOjE3ODkyOTEwNDEsImV4cCI6MTc4OTM3NzQ0MX0.g710UuLUEphvulf17f7cCytZKT_d19Ulek29qncXWDk
+
+{
+  "conversationId": "6aa66a6b1a7ce044ad34b5fe",
+  "content": "Hello from ChatSpace!",
+  "messageType": "text"
+}
+result:
+{
+    "success": true,
+    "message": "Message send successfully"
+}
+
+11. 

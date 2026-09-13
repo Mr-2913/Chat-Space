@@ -1,10 +1,10 @@
 
+apiTestResult.txt
 important.txt
 node_modules/
 .env
 .env.*
 !.env.example
-
 dist/
 build/
 
